@@ -6,7 +6,7 @@
         "scalingMode": "STATELESS",
         "skipNodeEmails": true,
         "isRedeploySupport": true,
-        "isResetServicePassword": "NODEGROUP",
+        "isResetServicePassword": "NODEGROUP"
     },
     "validation": {
         "minCount": 3,
