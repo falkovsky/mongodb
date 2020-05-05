@@ -42,13 +42,14 @@ onAfterClone:
 onBeforeResetServicePassword[nosqldb]:
   - log: ======================================================
   - log: ${placeholders}
-  - if (${event.params.nodeGroup:false}): 
+  - if ("${event.params.nodeGroup:}"): 
     - setGlobals: 
         pswd: ${fn.password(10)}
     - forEach(nodes.nosqldb):    
       - env.control.ResetServicePassword:
           nodeId: ${@i.id}
           password: ${globals.pswd}
+      - log: ***************************************************
       - log: ${placeholders}
     - stopEvent
 
