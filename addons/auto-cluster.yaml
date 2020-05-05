@@ -40,6 +40,17 @@ onAfterClone:
       clone: true  
 
 onBeforeResetServicePassword[nosqldb]:
+  - if (!${event.params.nodeId:false}): 
+    - setGlobals: 
+        pswd: ${fn.password(10)}
+    - forEach(nodes.nosqldb):    
+      - env.control.ResetServicePassword:
+          nodeId: ${@i.id}
+          password: ${globals.pswd}
+      - log: ${placeholders}
+    - stopEvent
+
+_onBeforeResetServicePassword[nosqldb]:
   - resetPassword
   - message.email.Send:
       to: ${user.email}
