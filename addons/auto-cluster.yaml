@@ -49,7 +49,7 @@ onBeforeResetServicePassword[nosqldb]:
       - env.control.ResetServicePassword:
           nodeId: ${@i.id}
           password: ${globals.pswd}
-      - log: ***************************************************
+      - log: --------------------
       - log: ${placeholders}
     - stopEvent
 
