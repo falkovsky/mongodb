@@ -40,7 +40,9 @@ onAfterClone:
       clone: true  
 
 onBeforeResetServicePassword[nosqldb]:
-  - if (!${event.params.nodeId:false}): 
+  - log: ======================================================
+  - log: ${placeholders}
+  - if (${event.params.nodeGroup:false}): 
     - setGlobals: 
         pswd: ${fn.password(10)}
     - forEach(nodes.nosqldb):    
